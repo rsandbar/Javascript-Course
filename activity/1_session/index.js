@@ -1,5 +1,7 @@
 // Ejercicio 1
 
+import {mensaje} from './aboutme.js';
+console.log(mensaje);
 console.log("Ejercicio 1");
 
 // Ejercicio 2
