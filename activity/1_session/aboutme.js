@@ -6,4 +6,3 @@ const mensaje = `Hola, me llamo ${nombApe} y soy ${profesion}.
 Estoy cursando este Máster porque me gustaría trabajar en ${newpuesto}`
 
 export{mensaje};
-//console.log(mensaje);
