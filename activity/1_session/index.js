@@ -16,3 +16,5 @@ import "./ejercicio6.js";
 
 // Ejercicio 6
 
+//Comentario para validar cambios
+
