@@ -32,7 +32,21 @@
                         <br>
                     <p>Una <strong>función constructora</strong> no es más que una función regular que se convierte en
                         constructor cuando se declara con la palabra <code>new</code>.</p>
-                    <pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params">name, age</span>)</span>{
+<pre><code class="lang-javascript"><span class="hljs-comment">// without name </span>
+<span class="hljs-keyword">var</span> person = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name, age</span>) </span>{
+    <span class="hljs-keyword">this</span>.name = name;
+    <span class="hljs-keyword">this</span>.age = age;
+}
+
+<span class="hljs-keyword">var</span> lucas = <span class="hljs-keyword">new</span> person(<span class="hljs-string">"Lucas"</span>, <span class="hljs-number">26</span>);
+
+<span class="hljs-keyword">var</span> maria = <span class="hljs-keyword">new</span> person(<span class="hljs-string">"Maria"</span>, <span class="hljs-number">27</span>);
+
+<span class="hljs-built_in">console</span>.log(lucas);
+<span class="hljs-built_in">console</span>.log(maria);
+
+<span class="hljs-comment">// with name</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params">name, age</span>)</span>{
     <span class="hljs-keyword">this</span>.name = name;
     <span class="hljs-keyword">this</span>.age = age;
 }
@@ -48,6 +62,16 @@
 
 person1.info();
 </code></pre>
+
+<p>Se podría extender el objeto mediante un <strong>spread operator</strong> de sus prototipos.</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">let</span> person_extended = {
+    height: <span class="hljs-number">180</span>,
+    <span class="hljs-params">...</span>person1
+}
+
+console.<span class="hljs-keyword">log</span>(person_extended);
+</code></pre>
+
                     <p>Como podéis ver es posible crear objetos mediante <strong>funciones constructoras</strong> aunque
                         es un poco engorroso el añadir nuevos métodos o extender las clases, es por ello que en
                         <strong>ES6</strong> se introdujeron las <strong>clases</strong>.</p>
@@ -186,165 +210,6 @@ opel.turnRadio();
                     <p>Hay muchísimas más propiedades de las clases en JavaScript, <a
                             href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes">aquí</a>
                         podéis ver una recopilación de todas las características que posee.</p>
-
-
-                    <hr class="code-separator">
-
-                    <h2 id="arrow">Consola JavaScript</h2>
-                    <p class="folder">/advanced/5_creacion_objetos/index.js</p>
-                    <pre>
-<code class="language-javascript">// Classes and Object creation
-
-// 1. Funciones constructoras
-
-var person = function(name, age) {
-    this.name = name;
-    this.age = age;
-}
-
-var lucas = new person("Lucas", 26);
-
-var maria = new person("Maria", 27);
-
-console.log(lucas);
-console.log(maria);
-
-// with name
-function Person(name, age){
-    this.name = name;
-    this.age = age;
-}
-
-let person1 = new Person("Lucas", 27);
-console.log(person1);
-
-// Adding methods
-Person.prototype.info = function() {
-    console.log(`Hi I'm ${this.name} and I'm ${this.age}`);
-}
-
-person1.info();
-
-
-// Extension
-
-let person_extended = {
-    height: 180,
-    ...person1
-}
-
-console.log(person_extended);
-
-// 2. Clases
-
-// Class declaration
-
-// const error_student = new Student("Pepe", 23); // Uncomment this to throw a ReferenceError for hoistin.
-
-class Student {
-    constructor(name, age) {
-        this.name = name;
-        this.age = age;
-    }
-
-    displayInfo() {
-        console.log(`Hello my name is ${this.name} and I'm ${this.age}`);
-    }
-}
-
-const first_student = new Student("Pedro", 22);
-first_student.displayInfo();
-
-// Class expression
-
-// unnamed
-
-let NewStudent = class {
-    constructor(name, age) {
-        this.name = name;
-        this.age = age;
-    }
-
-    displayInfo() {
-        console.log(`Hello my name is ${this.name} and I'm ${this.age}`);
-    }
-}
-
-console.log(NewStudent.name);
-
-// named
-
-let NewPerson = class Person {
-    constructor(name, age) {
-        this.name = name;
-        this.age = age;
-    }
-
-    displayInfo() {
-        console.log(`Hello my name is ${this.name} and I'm ${this.age}`);
-    }
-}
-
-console.log(NewPerson.name);
-
-// New Class
-
-class Cat {
-    constructor(name, age) {
-        this._name = name;
-        this._age = age;
-    }
-
-    displayInfo() {
-        console.log(`miau miau miau miau`);
-    }
-
-    get name() {
-        return this._name.toUpperCase();
-    }
-
-    set name(newName) {
-        this._name = newName;
-    }
-}
-
-let snowball = new Cat("Snowball", 7);
-console.log(snowball.name);
-snowball.name = "Snowball II";
-console.log(snowball.name);
-
-// Inheritance
-
-class Vehicle {
-    constructor(tires, plate) {
-        this._tires = tires;
-        this._plate = plate;
-    };
-
-    start() {
-        console.log("Starting the engine...");
-    }
-
-    info() {
-        console.log(`${this.constructor.name} with plate: ${this._plate}`)
-    }
-}
-
-class Car extends Vehicle{
-    constructor(plate) {
-        super(4, plate);
-    }
-
-    turnRadio() {
-        console.log("Tunning the radio");
-    }
-}
-
-let opel = new Car("234lk");
-
-opel.info();
-opel.turnRadio();</code>
-</pre>
 
         </div>
     </div>

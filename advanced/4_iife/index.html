@@ -26,19 +26,16 @@
                 </ol>
                 <p>Al hacer esto, podemos crear nuevas variables sin que colisionen con el scope original.</p>
 <pre><code class="lang-javascript"><span class="hljs-comment">// 1. Primera variante de IIFE</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"%c1. Primera variante de IIFE"</span>, <span class="hljs-string">'color: #229179; font-size: 16px;'</span>);
 (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
     alert(<span class="hljs-string">"1. Estás usando IIFE"</span>)
 }());
 
 <span class="hljs-comment">// 2. Segunda variante de IIFE</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"%c2. Segunda variante de IIFE"</span>, <span class="hljs-string">'color: #229179; font-size: 16px;'</span>);
 (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"2. Estas usando IIFE"</span>)
 })();
 
 <span class="hljs-comment">// 3. Comprobar el scope de IIFE</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"%c3. Tercera variante de IIFE"</span>, <span class="hljs-string">'color: #229179; font-size: 16px;'</span>);
 (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
     <span class="hljs-keyword">var</span> newName = <span class="hljs-string">"Lucas"</span>;
     <span class="hljs-built_in">console</span>.log(newName);
@@ -108,39 +105,6 @@
 <span class="hljs-built_in">console</span>.log(secondPhone.charge(<span class="hljs-number">30</span>));     <span class="hljs-comment">// "Batería insuficiente"</span>
 <span class="hljs-built_in">console</span>.log(secondPhone.charge(<span class="hljs-number">20</span>));     <span class="hljs-comment">// 0</span>
 </code></pre>
-                
-
-
-                    <hr class="code-separator">
-
-                    <h2 id="arrow">Consola JavaScript</h2>
-                    <p class="folder">/advanced/4_IIFE/index.js</p>
-<pre>
-<code class="language-javascript">console.log("IIFE");
-
-// Primera variante de IIFE
-(function() {
-    alert("Estás usando IIFE")
-}());
-
-// Segunda variante de IIFE
-(function() {
-    console.log("Estas usando IIFE")
-})();
-
-// Comprobar el scope de IIFE
-(function() {
-    var newName = "Lucas";
-    console.log(newName);
-}());
-
-(function() {
-    var newName = "Maria";
-    console.log(newName);
-}());
-
-console.log(window.newName);</code>
-</pre>
 
         </div>
     </div>
